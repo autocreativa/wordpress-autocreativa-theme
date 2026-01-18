@@ -1,0 +1,845 @@
+/*
+Theme Name: Autocreativa
+Theme URI: https://autocreativa.com
+Author: Autocreativa
+Author URI: https://autocreativa.com
+Description: Tema profesional para agencia digital con soporte WooCommerce. Diseño moderno con modo oscuro/claro, glassmorphism y animaciones suaves. Ideal para mostrar servicios digitales y productos.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: autocreativa
+Tags: business, agency, woocommerce, dark-mode, one-column, custom-colors, custom-menu, featured-images, translation-ready
+
+Autocreativa Theme - Tema profesional para agencias digitales y servicios creativos.
+*/
+
+/* ==========================================================================
+   CSS VARIABLES - DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+    /* Sport UI / Fitness App Palette - Dark Mode (Default) */
+    --primary: #ffffff;
+    --bg-dark: #000000;
+    --bg-card: #1c1c1e;
+    --bg-input: #2c2c2e;
+    --text-muted: #d1d5db;
+    --text-subtle: #9ca3af;
+
+    /* Accent Colors */
+    --lime-primary: #bef264;
+    --lime-hover: #a3e635;
+    --accent-purple: #a855f7;
+    --accent-blue: #3b82f6;
+
+    /* Typography */
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Border Radius */
+    --radius-card: 24px;
+    --radius-pill: 9999px;
+
+    /* Glass Effects */
+    --card-glass-bg: rgba(28, 28, 30, 0.65);
+    --card-glass-border: rgba(255, 255, 255, 0.08);
+
+    /* Grid Background */
+    --grid-color: rgba(190, 242, 100, 0.15);
+    --grid-opacity: 0.8;
+}
+
+/* Light Theme */
+html.light,
+body.light-mode {
+    --primary: #000000;
+    --bg-dark: #f0f0f5;
+    --bg-card: #ffffff;
+    --bg-input: #e4e4e7;
+    --text-muted: #374151;
+    --text-subtle: #6b7280;
+    --lime-primary: #84cc16;
+    --accent-purple: #9333ea;
+    --accent-blue: #2563eb;
+    --card-glass-bg: rgba(255, 255, 255, 0.7);
+    --card-glass-border: rgba(0, 0, 0, 0.08);
+    --grid-color: rgba(132, 204, 22, 0.35);
+    --grid-opacity: 1;
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-dark);
+    font-family: var(--font-body);
+    color: var(--primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--lime-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--lime-hover);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-card);
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lime-primary);
+}
+
+/* ==========================================================================
+   LAYOUT COMPONENTS
+   ========================================================================== */
+
+.site-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+    .site-container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-container {
+        padding: 0 2rem;
+    }
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* ==========================================================================
+   CARD COMPONENTS
+   ========================================================================== */
+
+.sport-card {
+    background-color: var(--card-glass-bg);
+    border: 1px solid var(--card-glass-border);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-panel {
+    background: rgba(28, 28, 30, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-card);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.action-btn {
+    background-color: var(--lime-primary);
+    color: #000000;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    transition: transform 0.2s, background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.action-btn:hover {
+    background-color: var(--lime-hover);
+    transform: translateY(-2px);
+    color: #000000;
+}
+
+.btn-secondary {
+    background-color: var(--bg-input);
+    color: var(--primary);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-icon:hover {
+    background: var(--lime-primary);
+    color: #000000;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+.text-lime {
+    color: var(--lime-primary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-subtle {
+    color: var(--text-subtle);
+}
+
+.text-outline-lime {
+    -webkit-text-stroke: 1px var(--lime-primary);
+    color: transparent;
+}
+
+.bg-card {
+    background-color: var(--bg-card);
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.section-icon {
+    display: inline-flex;
+    padding: 0.5rem;
+    background-color: var(--lime-primary);
+    border-radius: 0.5rem;
+    color: #000000;
+    margin-right: 0.75rem;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Staggered animations */
+.stagger-1 {
+    animation-delay: 0.1s;
+}
+
+.stagger-2 {
+    animation-delay: 0.2s;
+}
+
+.stagger-3 {
+    animation-delay: 0.3s;
+}
+
+.stagger-4 {
+    animation-delay: 0.4s;
+}
+
+.stagger-5 {
+    animation-delay: 0.5s;
+}
+
+/* ==========================================================================
+   SKILL BARS
+   ========================================================================== */
+
+.skill-bar-container {
+    margin-bottom: 1rem;
+}
+
+.skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.skill-bar-name {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.skill-bar-level {
+    color: var(--text-subtle);
+}
+
+.skill-bar-track {
+    height: 0.5rem;
+    width: 100%;
+    background-color: var(--bg-input);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background-color: var(--lime-primary);
+    border-radius: 9999px;
+    transition: width 1s ease-out;
+}
+
+/* ==========================================================================
+   SKILL RINGS
+   ========================================================================== */
+
+.skill-ring {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-ring-container {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.skill-ring-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.skill-ring-bg {
+    stroke: var(--bg-input);
+    stroke-width: 6;
+    fill: transparent;
+}
+
+.skill-ring-progress {
+    stroke-width: 6;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-dasharray: 175.9;
+    transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.skill-ring-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.skill-ring-name {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   TIMELINE
+   ========================================================================== */
+
+.timeline {
+    position: relative;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0.5rem;
+}
+
+.timeline-item {
+    padding-left: 1.5rem;
+    padding-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--bg-card);
+}
+
+.timeline-company {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.875rem;
+}
+
+.timeline-meta {
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+}
+
+.timeline-desc {
+    font-size: 0.625rem;
+    color: var(--text-subtle);
+    margin-top: 0.25rem;
+}
+
+/* Timeline dot colors */
+.dot-cyan {
+    background-color: #06b6d4;
+}
+
+.dot-green {
+    background-color: #22c55e;
+}
+
+.dot-blue {
+    background-color: #3b82f6;
+}
+
+.dot-orange {
+    background-color: #f97316;
+}
+
+.dot-purple {
+    background-color: #a855f7;
+}
+
+.dot-yellow {
+    background-color: #eab308;
+}
+
+.dot-red {
+    background-color: #ef4444;
+}
+
+/* ==========================================================================
+   PROFILE / HERO
+   ========================================================================== */
+
+.hero-section {
+    padding: 3rem 0 2rem;
+}
+
+.hero-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-image-wrapper {
+    position: relative;
+}
+
+.profile-image {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px solid var(--lime-primary);
+    overflow: hidden;
+    background-color: var(--bg-card);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background-color: var(--lime-primary);
+    color: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000000;
+}
+
+.profile-badge svg {
+    width: 14px;
+    height: 14px;
+}
+
+.hero-role {
+    font-size: 0.875rem;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.hero-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .hero-name {
+        font-size: 2.5rem;
+    }
+}
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+
+.contact-card {
+    background-color: var(--lime-primary) !important;
+    color: #000000;
+    text-align: center;
+}
+
+.contact-card h3 {
+    color: #000000;
+}
+
+.contact-card .text-subtle {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.contact-btn {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.contact-btn:hover {
+    transform: scale(1.02);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.social-link:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #000000;
+}
+
+/* ==========================================================================
+   EDUCATION & CERTIFICATIONS
+   ========================================================================== */
+
+.education-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.education-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.education-icon.graduated {
+    background-color: rgba(190, 242, 100, 0.2);
+    color: var(--lime-primary);
+}
+
+.education-title {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.875rem;
+}
+
+.education-institution {
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+}
+
+.cert-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.cert-badge {
+    padding: 0.375rem 0.75rem;
+    background-color: var(--bg-input);
+    border-radius: var(--radius-pill);
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   PROJECTS
+   ========================================================================== */
+
+.project-card {
+    position: relative;
+    height: 280px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0.4), transparent);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 0.9;
+}
+
+.project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+}
+
+.project-type {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 4px;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.project-card:hover .project-title {
+    color: var(--lime-primary);
+}
+
+/* ==========================================================================
+   THEME TOGGLE
+   ========================================================================== */
+
+.theme-controls {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 2cm;
+    }
+
+    html,
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 11px !important;
+    }
+
+    .theme-controls,
+    .no-print {
+        display: none !important;
+    }
+
+    .sport-card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        backdrop-filter: none !important;
+    }
+
+    a {
+        color: black !important;
+    }
+}
