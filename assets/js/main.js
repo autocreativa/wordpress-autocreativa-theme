@@ -476,10 +476,19 @@
             }
         });
 
-        // Close menu when clicking on a link
-        mainNavigation.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                closeMobileMenu();
+        // Removed auto-close on link click to allow navigation through categories
+        // Menu will only close when clicking the X button or outside the menu
+
+        // Add submenu toggle functionality for mobile
+        const menuItemsWithChildren = mainNavigation.querySelectorAll('.menu-item-has-children > a');
+        menuItemsWithChildren.forEach(function (menuLink) {
+            menuLink.addEventListener('click', function (e) {
+                // Only prevent default and toggle submenu in mobile view
+                if (mainNavigation.classList.contains('mobile-open')) {
+                    e.preventDefault();
+                    const parentLi = this.parentElement;
+                    parentLi.classList.toggle('open');
+                }
             });
         });
     }

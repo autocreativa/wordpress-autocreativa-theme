@@ -132,14 +132,8 @@
             <div class="footer-payment">
                 <span><?php esc_html_e('Pagos seguros con:', 'autocreativa'); ?></span>
                 <div class="payment-icons">
-                    <svg width="40" height="24" viewBox="0 0 40 24" fill="var(--text-muted)">
-                        <rect width="40" height="24" rx="4" fill="currentColor" opacity="0.2" />
-                        <text x="20" y="15" font-size="8" text-anchor="middle" fill="var(--text-muted)">VISA</text>
-                    </svg>
-                    <svg width="40" height="24" viewBox="0 0 40 24" fill="var(--text-muted)">
-                        <rect width="40" height="24" rx="4" fill="currentColor" opacity="0.2" />
-                        <text x="20" y="15" font-size="8" text-anchor="middle" fill="var(--text-muted)">MC</text>
-                    </svg>
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/transbank-logo.png"
+                        alt="Transbank" class="transbank-logo" style="height: 24px; width: auto; opacity: 0.8;">
                 </div>
             </div>
         </div>

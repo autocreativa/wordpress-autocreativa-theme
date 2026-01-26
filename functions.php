@@ -379,3 +379,22 @@ function autocreativa_default_shop_menu()
 
     echo '</ul>';
 }
+
+/**
+ * UI Improvements
+ */
+
+// Remove Related Products
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+
+// Remove Categories and Tags Meta
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+
+// Enqueue styles for improvements if not already covered
+function autocreativa_ui_improvements_styles()
+{
+    if (is_page('freelance') || is_page_template('page-freelance.php')) {
+        echo '<style>.site-main { margin-top: 4rem; }</style>';
+    }
+}
+add_action('wp_head', 'autocreativa_ui_improvements_styles');

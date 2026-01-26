@@ -58,9 +58,9 @@ if (empty($sale_products)) {
                         <?php endif; ?>
 
                         <div class="product-badges">
-                            <span class="badge badge-sale">-
-                                <?php echo esc_html($sale_percentage); ?>%
-                            </span>
+                            <?php if ($sale_percentage > 0): ?>
+                                <span class="badge badge-new"><?php esc_html_e('Oferta', 'autocreativa'); ?></span>
+                            <?php endif; ?>
                         </div>
 
                         <div class="product-overlay">
@@ -80,12 +80,17 @@ if (empty($sale_products)) {
                         </h3>
 
                         <div class="product-price">
-                            <span class="price-original">
-                                <?php echo wc_price($product->get_regular_price()); ?>
-                            </span>
-                            <span class="price-sale">
-                                <?php echo wc_price($product->get_sale_price()); ?>
-                            </span>
+                            <?php if ($product->get_price() == 0 || empty($product->get_price())): ?>
+                                <span
+                                    class="price-custom"><?php esc_html_e('Precio a convenir, contáctanos', 'autocreativa'); ?></span>
+                            <?php else: ?>
+                                <span class="price-original">
+                                    <?php echo wc_price($product->get_regular_price()); ?>
+                                </span>
+                                <span class="price-sale">
+                                    <?php echo wc_price($product->get_sale_price()); ?>
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </a>

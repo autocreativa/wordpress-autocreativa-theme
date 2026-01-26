@@ -91,7 +91,9 @@ if (empty($featured_products)) {
                         <h3 class="product-title"><?php echo esc_html($product->get_name()); ?></h3>
 
                         <div class="product-price">
-                            <?php if ($is_on_sale): ?>
+                            <?php if ($product->get_price() == 0 || empty($product->get_price())): ?>
+                                <span class="price-custom"><?php esc_html_e('Precio a convenir, contáctanos', 'autocreativa'); ?></span>
+                            <?php elseif ($is_on_sale): ?>
                                 <span class="price-original"><?php echo wc_price($product->get_regular_price()); ?></span>
                                 <span class="price-sale"><?php echo wc_price($product->get_sale_price()); ?></span>
                             <?php else: ?>

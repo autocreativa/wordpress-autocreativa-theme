@@ -188,7 +188,7 @@ add_filter('woocommerce_checkout_fields', 'autocreativa_checkout_fields');
  */
 function autocreativa_sale_flash()
 {
-    return '<span class="onsale">' . esc_html__('Sale!', 'autocreativa') . '</span>';
+    return '<span class="onsale">' . esc_html__('OFERTA', 'autocreativa') . '</span>';
 }
 add_filter('woocommerce_sale_flash', 'autocreativa_sale_flash');
 
@@ -202,7 +202,7 @@ function autocreativa_product_badges()
     echo '<div class="product-badges">';
 
     if ($product->is_on_sale()) {
-        echo '<span class="badge badge-sale">' . esc_html__('Sale', 'autocreativa') . '</span>';
+        echo '<span class="badge badge-sale">' . esc_html__('OFERTA', 'autocreativa') . '</span>';
     }
 
     if ($product->is_featured()) {
@@ -459,6 +459,19 @@ function autocreativa_mini_cart_fragment($fragments)
     return $fragments;
 }
 add_filter('woocommerce_add_to_cart_fragments', 'autocreativa_mini_cart_fragment');
+
+/**
+ * Custom price display for zero-price products
+ */
+function autocreativa_custom_price_html($price, $product)
+{
+    // Check if price is 0 or empty
+    if ($product->get_price() == 0 || $product->get_price() === '' || $product->get_price() === null) {
+        return '<span class="price-on-request">' . esc_html__('Precio a convenir - Contáctanos', 'autocreativa') . '</span>';
+    }
+    return $price;
+}
+add_filter('woocommerce_get_price_html', 'autocreativa_custom_price_html', 10, 2);
 
 /**
  * Register Shop Navigation Menu

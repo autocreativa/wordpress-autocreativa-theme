@@ -21,14 +21,16 @@ get_header();
             <!-- Sale Products -->
             <?php get_template_part('template-parts/sale-products'); ?>
 
+
             <!-- Product Categories -->
-            <?php get_template_part('template-parts/product-categories'); ?>
+            <?php // get_template_part('template-parts/product-categories'); ?>
+
 
             <!-- Freelance Services -->
             <?php get_template_part('template-parts/services-freelance'); ?>
 
             <!-- Featured Products -->
-            <?php get_template_part('template-parts/featured-products'); ?>
+            <?php // get_template_part('template-parts/featured-products'); ?>
 
             <!-- Promotional CTA Banner -->
             <?php get_template_part('template-parts/promo-cta'); ?>
