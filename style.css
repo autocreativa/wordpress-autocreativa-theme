@@ -843,3 +843,34 @@ img {
         color: black !important;
     }
 }
+
+/* ==========================================================================
+   WOOCOMMERCE OVERRIDES
+   ========================================================================== */
+
+/* Full width tabs for product description and reviews */
+.woocommerce-tabs {
+    width: 100% !important;
+    clear: both;
+}
+
+/* Ensure carousel works well */
+.woocommerce-product-gallery {
+    opacity: 1 !important;
+}
+
+/* ==========================================================================
+   LEGAL PAGES
+   ========================================================================== */
+
+.legal-page {
+    margin-top: 4rem !important; /* Fix separation from fixed header */
+}
+
+/* Ensure consistent width for legal content */
+.legal-content {
+    width: 100%;
+    max-width: 1280px; /* Standardize max-width */
+    margin: 0 auto;
+    padding: 2rem;
+}

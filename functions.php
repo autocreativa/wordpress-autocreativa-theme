@@ -64,6 +64,10 @@ function autocreativa_setup()
     // Add support for responsive embedded content
     add_theme_support('responsive-embeds');
 
+    // Add support for WooCommerce Product Gallery Slider
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+
     // Add support for editor styles
     add_theme_support('editor-styles');
     add_editor_style('assets/css/editor-style.css');
