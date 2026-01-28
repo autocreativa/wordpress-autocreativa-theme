@@ -198,7 +198,7 @@ add_action('wp_enqueue_scripts', 'autocreativa_scripts');
 require get_template_directory() . '/inc/woocommerce.php';
 
 /**
- * Include Customizer additions
+ * Include WooCommerce custom functions
  */
 require get_template_directory() . '/inc/customizer.php';
 
@@ -397,8 +397,23 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 // Enqueue styles for improvements if not already covered
 function autocreativa_ui_improvements_styles()
 {
-    if (is_page('freelance') || is_page_template('page-freelance.php')) {
+    if (is_page('freelance') || is_page_template('template-freelance.php')) {
         echo '<style>.site-main { margin-top: 4rem; }</style>';
     }
 }
 add_action('wp_head', 'autocreativa_ui_improvements_styles');
+
+/**
+ * Force /details-freelance page to always use template-freelance.php
+ */
+function autocreativa_force_freelance_template($template)
+{
+    if (is_page('details-freelance') || get_query_var('pagename') === 'details-freelance') {
+        $freelance_template = locate_template(array('template-freelance.php'));
+        if ($freelance_template) {
+            return $freelance_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'autocreativa_force_freelance_template');

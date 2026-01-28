@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
                 <?php esc_html_e('Servicios Freelance', 'autocreativa'); ?>
             </h2>
         </div>
-        <a href="<?php echo esc_url(home_url('/freelance')); ?>" class="section-link">
+        <a href="<?php echo esc_url(home_url('/details-freelance')); ?>" class="section-link">
             <?php esc_html_e('Ver detalles', 'autocreativa'); ?>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"></polyline>

@@ -92,8 +92,8 @@
 }
 
 .badge-sale {
-    background: #ef4444;
-    color: #fff;
+    background: var(--lime-primary);
+    color: #000;
 }
 
 .badge-featured {
@@ -1892,14 +1892,14 @@ form.woocommerce-checkout {
 }
 
 .mini-cart-content .woocommerce-mini-cart__buttons .button.checkout {
-    background: var(--lime-primary);
-    color: #000;
-    border: none;
+    background: var(--bg-input);
+    color: var(--primary);
+    border: 1px solid var(--card-glass-border);
 }
 
 .mini-cart-content .woocommerce-mini-cart__buttons .button.checkout:hover {
-    background: var(--lime-hover);
-    transform: translateY(-2px);
+    border-color: var(--lime-primary);
+    color: var(--lime-primary);
 }
 
 .mini-cart-content .woocommerce-mini-cart__buttons .button.wc-forward {
@@ -3059,14 +3059,13 @@ form.woocommerce-checkout {
 }
 
 /* Freelance Page Margin */
-.page-template-page-freelance .site-main,
+.page-template-template-freelance .site-main,
 .page-id-freelance .site-main {
     padding-top: 4rem;
 }
 
 /* Freelance Page Body Class Check - using general site-main padding if needed or specific page */
-body.page-template-template-freelance .site-main,
-body.page-id-266 .site-main {
+body.page-template-template-freelance .site-main {
     padding-top: 4rem;
 }
 

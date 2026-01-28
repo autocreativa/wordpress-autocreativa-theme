@@ -149,6 +149,12 @@ function autocreativa_product_thumbnail_wrapper_close()
 }
 add_action('woocommerce_before_shop_loop_item_title', 'autocreativa_product_thumbnail_wrapper_close', 11);
 
+ function autocreativa_remove_loop_sale_flash()
+ {
+     remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
+ }
+ add_action('wp', 'autocreativa_remove_loop_sale_flash');
+
 /**
  * Customize cart fragments for mini-cart
  */
