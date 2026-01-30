@@ -480,6 +480,165 @@
     opacity: 0.8;
 }
 
+ .freelance-page .freelance-details-section {
+     display: flex;
+     justify-content: center;
+ }
+
+ .freelance-page .freelance-details-card {
+     width: 100%;
+     max-width: 1280px;
+     padding: 3rem 2.5rem;
+ }
+
+ .freelance-page .freelance-avatar {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 1rem;
+ }
+
+ .freelance-page .freelance-avatar-img {
+     width: 112px;
+     height: 112px;
+     border-radius: 50%;
+     object-fit: cover;
+     border: 2px solid rgba(255, 255, 255, 0.08);
+ }
+
+ .freelance-page .freelance-name {
+     text-align: center;
+     margin: 1rem 0 0;
+ }
+
+ .freelance-page .freelance-intro {
+     text-align: center;
+     max-width: 54ch;
+     margin: 1.25rem auto 0;
+     line-height: 1.7;
+ }
+
+ .freelance-page .freelance-highlights {
+     margin-top: 2.5rem;
+     display: grid;
+     gap: 1.5rem;
+ }
+
+ .freelance-page .freelance-highlight {
+     text-align: left;
+ }
+
+ .freelance-page .freelance-highlight-title {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     margin: 0 0 0.75rem;
+     font-size: 1.05rem;
+ }
+
+ .freelance-page .freelance-highlight-icon {
+     font-size: 1rem;
+ }
+
+ .freelance-page .freelance-signature-inline {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 0.75rem;
+     margin-top: 2.5rem;
+ }
+
+ .freelance-page .freelance-signature-separator {
+     display: block;
+     width: min(320px, 70%);
+     height: 1px;
+     background: linear-gradient(
+         90deg,
+         transparent,
+         rgba(255, 255, 255, 0.18),
+         transparent
+     );
+ }
+
+ .freelance-page .freelance-signature-image {
+     max-height: 56px;
+     width: auto;
+     opacity: 0.9;
+ }
+
+ .freelance-page .freelance-actions {
+     margin-top: 1.75rem;
+     display: flex;
+     flex-direction: column;
+     gap: 0.75rem;
+     align-items: center;
+ }
+
+ .freelance-page .freelance-email-wrapper {
+     margin-top: 1.25rem;
+     display: flex;
+     justify-content: center;
+ }
+
+ .freelance-page .freelance-email-link {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     gap: 0.65rem;
+     padding: 0.75rem 1.25rem;
+     border-radius: 999px;
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     background: rgba(255, 255, 255, 0.05);
+     color: var(--text-main);
+     text-decoration: none;
+     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+ }
+
+ .freelance-page .freelance-email-link:hover {
+     transform: translateY(-2px);
+     background: rgba(255, 255, 255, 0.1);
+     border-color: rgba(190, 242, 100, 0.35);
+ }
+
+ .freelance-page .freelance-action-btn {
+     width: min(420px, 100%);
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     padding: 0.9rem 1.25rem;
+     border-radius: 12px;
+     background: rgba(255, 255, 255, 0.06);
+     border: 1px solid rgba(255, 255, 255, 0.08);
+     color: var(--primary);
+     text-decoration: none;
+     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+ }
+
+ .freelance-page .freelance-action-btn:hover {
+     transform: translateY(-2px);
+     background: rgba(255, 255, 255, 0.1);
+     border-color: rgba(190, 242, 100, 0.35);
+ }
+
+ .freelance-page .freelance-social-links {
+     margin-top: 1.25rem;
+     display: flex;
+     justify-content: center;
+     gap: 0.85rem;
+     flex-wrap: wrap;
+ }
+
+ .freelance-page .freelance-social-links .social-link {
+     color: white;
+ }
+
+ .freelance-page .signature-section {
+     width: 100%;
+     max-width: 760px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
  .freelance-page .signature-content {
      display: flex;
      flex-direction: column;
